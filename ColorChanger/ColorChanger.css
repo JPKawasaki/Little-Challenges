@@ -37,7 +37,6 @@ html, body {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    width: 100%;
     overflow: hidden;
 }
 
@@ -51,6 +50,6 @@ html, body {
   
 #check-btn {
     font-size: 20pt;
-    margin-top: 50px;
+    margin-top: 1 0px;
 }
   
