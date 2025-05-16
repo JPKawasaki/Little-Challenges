@@ -1,23 +1,29 @@
-/* World Map where i can place a pin on the places ive already visited:
+<!--World Map where i can place a pin on the places ive already visited:
 Searchbar, Click on pin for information(with friends, how long, etc.), 
-able to delete or move the pin, maybe add photos inside the pin...*/
+able to delete or move the pin, maybe add photos inside the pin...-->
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8"/>
         <title>Interactive WorldMap</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="../../ExterneDaten/favicon_io/favicon-32x32.png"/> <!--Favivon-->
+        <link rel="stylesheet" href="../CSS/InteractiveWorldMap.css"/>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     </head>
     <body>
-        <nav>
+        <nav class="navbar">
             <ul>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li id="nav-left"><a href=""></a></li>
+                <li id="nav-middle"><a href=""></a></li>
+                <li id="nav-right"><a href="">Login</a></li>
             </ul>
         </nav>
         <main>
-            
+            <div id="map"></div>
         </main>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <script src="../JS/InteractiveWorldMap.js" defer></script>
     </body>
 </html>

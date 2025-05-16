@@ -1,0 +1,47 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex; /* Falls du weitere Flexitems hast, optional */
+    flex-direction: column; /* optional */
+}
+  
+.navbar {
+    font-size: 16pt;
+    height: 60px;
+    background-color: rgb(210, 210, 210);
+    display: flex;
+    align-items: center;  
+}
+
+.navbar ul {
+    color: black;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around; /* Verteilt die Items gleichmäßig */
+    align-items: center;
+}
+
+.navbar a {
+    color: black;
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+#map {
+    flex: 1;
+}
