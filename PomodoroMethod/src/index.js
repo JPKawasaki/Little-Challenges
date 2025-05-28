@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.getElementById('start');
     const resetBtn = document.getElementById('reset');
     const pomodoroCounter = document.getElementById('pomodoro');
-    const soundWork = new Audio('Sounds/mixkit-cinematic-transition-swoosh-heartbeat-trailer-488.wav');
-    const soundBreak = new Audio('Sounds/mixkit-cool-impact-movie-trailer-2909.wav');
-    const soundRound = new Audio('Sounds/mixkit-movie-trailer-epic-impact-2908.wav');
+    const soundWork = new Audio('../Sounds/mixkit-cinematic-transition-swoosh-heartbeat-trailer-488.wav');
+    const soundBreak = new Audio('../Sounds/mixkit-cool-impact-movie-trailer-2909.wav');
+    const soundRound = new Audio('../Sounds/mixkit-movie-trailer-epic-impact-2908.wav');
     
     
     let totalSecondsWork = 25 * 60;
@@ -41,10 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentSeconds = totalSecondsBreak;
                 } else {
                     currentSeconds = totalSecondsWork
+                    counter++;
+                    pomodoroCounter.textContent = `Pomodoros completed: ${counter}`;
+                    soundRound.play();
                 }
                 updateTime(currentSeconds);
-                counter++;
-                pomodoroCounter.innerContent = `Pomodoros completed: ${counter}`
             }
         }, 1000);
     })
@@ -56,6 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
         totalSecondsBreak = 5 * 60;
         currentSeconds = totalSecondsWork;
         isBreak = false;
+        counter = 0;
+        pomodoroCounter.textContent = `Pomodoros completed: ${counter}`;
         updateTime(currentSeconds);
     })
     updateTime(currentSeconds);
