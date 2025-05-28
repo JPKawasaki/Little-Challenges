@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const seconds = document.getElementById('seconds');
     const startBtn = document.getElementById('start');
     const resetBtn = document.getElementById('reset');
-    const pomodoroCounter = document.getElementById('pomodoro');
+    const pomodoroCounter = document.getElementById('pomodoros');
+
     const soundWork = new Audio('../Sounds/mixkit-cinematic-transition-swoosh-heartbeat-trailer-488.wav');
     const soundBreak = new Audio('../Sounds/mixkit-cool-impact-movie-trailer-2909.wav');
     const soundRound = new Audio('../Sounds/mixkit-movie-trailer-epic-impact-2908.wav');
@@ -25,41 +26,52 @@ document.addEventListener('DOMContentLoaded', () => {
         seconds.textContent = String(secs).padStart(2, '0');
     };
 
-    startBtn.addEventListener("click", function() {
-        soundWork.play();
+    startBtn.addEventListener("click", () => {
         if (intervalId) return;
+
+        soundWork.play();
 
         intervalId = setInterval(() => {
             if (currentSeconds > 0) {
                 currentSeconds--;
                 updateTime(currentSeconds);
             } else {
-                soundBreak.play();
                 isBreak = !isBreak;
 
                 if (isBreak) {
                     currentSeconds = totalSecondsBreak;
+                    soundBreak.play();
                 } else {
-                    currentSeconds = totalSecondsWork
+                    currentSeconds = totalSecondsWork;
                     counter++;
                     pomodoroCounter.textContent = `Pomodoros completed: ${counter}`;
                     soundRound.play();
                 }
+
                 updateTime(currentSeconds);
             }
         }, 1000);
-    })
+    });
 
-    resetBtn.addEventListener("click", function() {
-        clearInterval(intervalId);
-        intervalId = null;
+    resetBtn.addEventListener("click", () => {
+        console.log("Reset clicked. IntervalId before clear:", intervalId);
+        if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+            console.log("Interval cleared.");
+        } else {
+            console.log("No interval to clear.");
+        }
+
         totalSecondsWork = 25 * 60;
         totalSecondsBreak = 5 * 60;
         currentSeconds = totalSecondsWork;
         isBreak = false;
         counter = 0;
+    
         pomodoroCounter.textContent = `Pomodoros completed: ${counter}`;
         updateTime(currentSeconds);
-    })
+    });
+
     updateTime(currentSeconds);
 })
