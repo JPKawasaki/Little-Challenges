@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const seconds = document.getElementById('seconds');
     const startBtn = document.getElementById('start');
     const resetBtn = document.getElementById('reset');
-    const pomodoroCounter = document.getElementById('pomodoros');
+    const pomodoroCounter = document.getElementById('pomodorosToday');
     
     const workingCat = document.getElementById('workingCat');
     const sleepingCat = document.getElementById('sleepingCat');
@@ -16,11 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let totalSecondsWork = 25 * 60;
     let totalSecondsBreak = 5 * 60;
-    let totalLongBreak = 15 * 60;
-    let longerBreak;
+    let totalSecondsLongBreak = 15 * 60;
+    let longerBreak = false;
     let isBreak = false;
     let intervalId = null;
     let counter = 0;
+    let pomodorosOverall = 0;
 
     let startTime = null;
     let duration = totalSecondsWork * 1000;
@@ -33,17 +34,24 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function startCycle() {
-        duration = (isBreak ? totalSecondsBreak : totalSecondsWork) * 1000;
+        if (longerBreak) {
+            duration = totalSecondsLongBreak * 1000;
+        } else if (isBreak) {
+            duration = totalSecondsBreak * 1000;
+        } else {
+            duration = totalSecondsWork * 1000;
+        }
+    
         startTime = Date.now();
     
         if (!intervalId) {
-            // Sound passend zur Phase abspielen
+            // Sound & Animation je nach Phase
             if (isBreak) {
                 soundBreak.play();
                 workingCat.style.display = "none";
                 sleepingCat.style.display = "inline-block";
             } else {
-                soundWork.play();
+                soundRound.play();
                 sleepingCat.style.display = "none";
                 workingCat.style.display = "inline-block";
             }
@@ -51,18 +59,19 @@ document.addEventListener('DOMContentLoaded', () => {
             intervalId = setInterval(() => {
                 const elapsed = Date.now() - startTime;
                 const remainingMs = duration - elapsed;
+    
                 if (remainingMs <= 0) {
                     clearInterval(intervalId);
                     intervalId = null;
     
-                    // Umschalten der Phase **vor** nächstem Zyklusstart
-                    isBreak = !isBreak;
-    
-                    if (!isBreak) {  // wenn wir wieder in Arbeit wechseln (Pause beendet)
+                    if (!isBreak) {  // Arbeitsphase war vorbei
                         counter++;
+                        pomodorosOverall++;
                         pomodoroCounter.textContent = `Pomodoros completed: ${counter}`;
-                        soundRound.play();
                     }
+    
+                    isBreak = !isBreak;
+                    longerBreak = (isBreak && counter % 4 === 0);
     
                     updateTime(0);
                     startCycle();
@@ -72,8 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 250);
         }
     }
-
+    
     startBtn.addEventListener("click", () => {
+        soundWork.play();
         if (!intervalId) {
             startCycle();
         }
@@ -85,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             intervalId = null;
         }
         isBreak = false;
+        longerBreak = false;
         counter = 0;
         workingCat.style.display = "none";
         sleepingCat.style.display = "inline-block";

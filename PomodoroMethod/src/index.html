@@ -10,23 +10,28 @@
         <link rel="stylesheet" href="main.css"/>
     </head>
     <body>
-        <div class="timer">
-            <p class="timer" id="minutes">25</p>
-            <p class="timer" id="dots">:</p>
-            <p class="timer" id="seconds">00</p>
-        </div>
-        <div class="pictures">
-            <img id="sleepingCat" src="../../../sleepingCat.png"style="display: inline-block"/> <!--dont know if cat or not-->
-            <img id="workingCat" src="../../../workingCat.png" style="display: none"/>
-        </div>
-        <div class="pomodoros">
-            <p class="pomodoros" id="pomodoros">Pomodoros completed: 0</p>
-        </div>
-        <div class="btn">
-            <button class="btn" id="start">Start</button>
-            <button class="btn" id="reset">Reset</button>
+        <div class="motherboard">
+            <div class="timer">
+                <p class="time" id="minutes">25</p>
+                <p class="time" id="dots">:</p>
+                <p class="time" id="seconds">00</p>
+            </div>
+            <div class="pictures">
+                <img id="sleepingCat" src="../pictures/sleepingCat.png"style="display: inline-block"/> <!--dont know if cat or not-->
+                <img id="workingCat" src="../pictures/workingCat.png" style="display: none"/>
+            </div>
+            <div class="pomodoros">
+                <select>
+                    <option class="optionPomodoros" id="pomodorosToday">Pomodoros completed: 0</option>
+                    <option class="optionPomodoros" id="pomodorosThisWeek">Pomodoros this Week: 0</option>
+                    <option class="optionPomodoros" id="pomodorosOverall">Pomodoros overall: 0</option>
+                </select>
+            </div>
+            <div class="btn">
+                <button class="btn" id="start">Start</button>
+                <button class="btn" id="reset">Reset</button>
+            </div>
         </div>
         <script src="index.js" defer></script>
     </body>
 </html>
-
