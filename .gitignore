@@ -1,7 +1,7 @@
 SelfmadeCalculator/SelfmadeCalculator-darwin-arm64/
 SelfmadeCalculator/SelfmadeCalculator-darwin-x64/
 package-lock.json
-PomodoroMethod/node_modules
+PomodoroMethod/node_modules/
 node_modules
-PomodoroMethod/out
+PomodoroMethod/out/
 out
