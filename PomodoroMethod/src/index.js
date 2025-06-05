@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         counter++;
                         pomodorosOverall++;
                         pomodoroCounter.textContent = `Pomodoros completed: ${counter}`;
+                        pomodorosOverall.textContent = `Pomodoros overall: ${pomodorosOverall}`;
                     }
     
                     isBreak = !isBreak;
