@@ -9,12 +9,16 @@
     <body>
         <div>
             <form>
-                <div>
-                    <input placeholder="Last Name">
-                    <input placeholder="First Name">
-                    <input placeholder="Username">
-                    <input placeholder="Email">
-                    <button>Sign Up</button>
+                <input placeholder="Last Name" type="text" required>
+                <input placeholder="First Name" type="text" required>
+                <input placeholder="Username" required>
+                <input placeholder="Email" type="email" required>
+                <input placeholder="Password" type="password" required>
+                <input placeholder="Repeat password" type="password"required>
+                <input id="TermsOfService" type="checkbox" required>
+                <label for="TermsOfService">I agree to the <b>Terms of Service</b> and <b>Privacy Policy</b></label>
+                <button href="index.html">Sign Up</button>
+                <a href="login.html" target="_self">Sign In</a>
             </form>
         </div>
     </body>
