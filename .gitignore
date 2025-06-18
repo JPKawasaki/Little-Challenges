@@ -7,4 +7,8 @@ PomodoroMethod/out/
 PomodoroMethod/node_modules/
 SelfmadeCalculator/SelfmadeCalculator-darwin-arm64/
 SelfmadeCalculator/SelfmadeCalculator-darwin-x64/
-
+ToDoList/node_modules/
+ToDoList/package-lock.json/
+ToDoList/models/
+ToDoList/routes/
+ToDoList/server.js
