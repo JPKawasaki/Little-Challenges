@@ -12,3 +12,4 @@ ToDoList/package-lock.json/
 ToDoList/models/
 ToDoList/routes/
 ToDoList/server.js
+.gitignore
