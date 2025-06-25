@@ -1,5 +1,21 @@
 //This will be my soduko App with C++
 //Need to use Backtracking for checking the 9x9 Arrays
+/*First, you must have a sudoku solver. Apply the solver on an empty sudoku. That is to find a solution for a sudoku with no clues.
+Filling in numbers from top left to right bottom in order. Otherwise, there is a time issue. I don't know why.
+Anyway, it works very fast wait no time to have a completed sudoku puzzle. When you apply backtracking,
+shuffle the list of possible numbers for each position. Otherwise, you will get the same puzzle everytime.
+
+Second, randomize a new list of all positions. That is a list of 81 positions in random order. According to this list of order,
+try removing numbers from the above puzzle. Everytime, you remove a number, you have to check if it has more than one solution.
+If it has more than one solution. The number should put back and try next position in the random list.
+This process continues until the end of list or you already has removed 64 numbers from the puzzle successfully.
+The number is 64 because somebody has proved that there is no sudoku with less than 17 clues with unique solution.
+This process is varies from 15 seconds to 2 minutes. Usually 30 seconds to get a sudoku puzzle.
+
+Third, if you don't want to wait 30 seconds to 2 minutes for each sudoku puzzle, you may apply some mutations to the above sudoku.
+This includes switching rows and columns, rotating. You may also remap the numbers. For example, 1->2, 2->3...9->1.
+After rotating and remapping, no one will notice this is the original sudoku.
+*/
 
 #include <iostream>
 #include <string.h>
