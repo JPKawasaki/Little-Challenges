@@ -13,7 +13,7 @@ int main() {
 
     //Solve Sodoku
     if (solveSudoku(grid)) {
-        cout << "Sudoku geloest:\n";
+        cout << "Sudoku solved:\n";
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 cout << grid[i][j] << " ";
@@ -21,25 +21,28 @@ int main() {
             cout << "\n";
         }
     } else {
-        cout << "Keine Loesung gefunden!\n";
+        cout << "Couldnt solved!\n";
     }
 }
 
 //Function to see if i can use my current number
 bool canPlace(int grid[9][9], int row, int col, int num) {
 
+    //Check the rows
     for (int j = 0; j < 9; j++) {
         if (grid[row][j] == num) {
             return false;
         }
     }
 
+    //Check the columns
     for (int i = 0; i < 9; i++) {
         if (grid[i][col] == num) {
             return false;
         }
     }
 
+    //Check the 3x3 block
     int blockRow = (row / 3) * 3;
     int blockCol = (col / 3) * 3;
 
@@ -59,19 +62,25 @@ bool solveSudoku(int grid[9][9]) {
     int row, col;
     bool emptyFound = false;
 
+
+    //Looking for a empty row or column
     for (int i = 0; i < 9 && !emptyFound; i++)
         for (int j = 0; j < 9 && !emptyFound; j++)
             if (grid[i][j] == 0) {
-                row = i; col = j; emptyFound = true;
+                row = i; col = j; emptyFound = true; //emptyFound = true, to stop the searching process
             }
 
+    //If no empty Cell was found, the Sudoku is solved
     if (!emptyFound) return true;
 
+    //Heart of the Backtracking-Logic
     for (int i = 1; i <= 9; i++)
-        if (canPlace(grid, row, col, i)) {
+        if (canPlace(grid, row, col, i)) { //If the Number is valid
             grid[row][col] = i;
-            if (solveSudoku(grid)) return true;
-            grid[row][col] = 0;
+            if (solveSudoku(grid)) 
+                return true; //Calls solveSudoku() function recursive!!!
+
+            grid[row][col] = 0; //Reset the Number (i is now i++ 2)
         }
 
     return false;
