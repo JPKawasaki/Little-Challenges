@@ -19,6 +19,9 @@ After rotating and remapping, no one will notice this is the original sudoku.
 
 #include <iostream>
 #include <string.h>
+#include <vector>
+#include <algorithm>
+#include <random>
 using namespace std;
 
 bool canPlace(int grid[9][9], int row, int col, int num);
@@ -30,7 +33,7 @@ int main() {
     //Solve Sodoku
     if (solveSudoku(grid)) {
         cout << "Sudoku solved:\n";
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++) { //To print out the grid
             for (int j = 0; j < 9; j++) {
                 cout << grid[i][j] << " ";
             }
@@ -73,7 +76,7 @@ bool canPlace(int grid[9][9], int row, int col, int num) {
     return true;
 }
 
-//Backtracking
+//Backtracking!
 bool solveSudoku(int grid[9][9]) {
     int row, col;
     bool emptyFound = false;
@@ -89,10 +92,16 @@ bool solveSudoku(int grid[9][9]) {
     //If no empty Cell was found, the Sudoku is solved
     if (!emptyFound) return true;
 
-    //Heart of the Backtracking-Logic
-    for (int i = 1; i <= 9; i++)
-        if (canPlace(grid, row, col, i)) { //If the Number is valid
-            grid[row][col] = i;
+    //Heart of the Backtracking-Logic!
+    //Random Number
+    std::vector<int> randomNum = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(randomNum.begin(), randomNum.end(), g);
+
+    for (int num : randomNum)
+        if (canPlace(grid, row, col, num)) { //If the Number is valid
+            grid[row][col] = num;
             if (solveSudoku(grid)) 
                 return true; //Calls solveSudoku() function recursive!!!
 
@@ -100,4 +109,9 @@ bool solveSudoku(int grid[9][9]) {
         }
 
     return false;
+}
+
+//Function to remove Numbers and to check if there is only one Solution per deleted number
+bool removeNumbers(int grid[9][9]) {
+
 }
