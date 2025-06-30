@@ -17,6 +17,8 @@ The number is 64 because somebody has proved that there is no sudoku with less t
 #include <vector>
 #include <algorithm>
 #include <random>
+#include <SFML/Graphics.hpp>
+
 using namespace std;
 
 bool canPlace(int grid[9][9], int row, int col, int num);
@@ -24,6 +26,26 @@ bool solveSudoku(int grid[9][9]);
 bool removeNumbers(int grid[9][9]);
 
 int main() {
+    //Test Window
+    sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "Sudoku", sf::State::Fullscreen);
+
+    sf::CircleShape shape(100.f);
+    shape.setFillColor(sf::Color::Green);
+
+    while (window.isOpen())
+    {
+        while (const std::optional event = window.pollEvent())
+        {
+            if (event->is<sf::Event::Closed>())
+                window.close();
+        }
+
+        window.clear();
+        window.draw(shape);
+        window.display();
+    }
+    //
+
     int grid[9][9] = {{0}}; //Fill the grid with 0
 
     //Solve Sodoku
