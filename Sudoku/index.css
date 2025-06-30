@@ -1,0 +1,23 @@
+.sudoku-board {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    border: 1px solid black;
+    width: 276px;
+}
+
+.threeTimesThree {
+    display: grid;
+    grid-template-columns: repeat(3, 30px);
+    grid-template-rows: repeat(3, 30px);
+    border: 1px solid black;
+}
+
+.threeTimesThree div {
+    border: 0.5px solid gray;
+    width: auto;
+    height: auto;
+}
+
+.grey {
+    background-color: rgb(229, 229, 229);
+}
