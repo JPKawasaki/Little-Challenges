@@ -26,11 +26,9 @@ bool solveSudoku(int grid[9][9]);
 bool removeNumbers(int grid[9][9]);
 
 int main() {
+    
     //Test Window
     sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "Sudoku", sf::State::Fullscreen);
-
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
 
     while (window.isOpen())
     {
@@ -40,11 +38,12 @@ int main() {
                 window.close();
         }
 
-        window.clear();
-        window.draw(shape);
+        window.clear(sf::Color::White);
+        //window.draw();
         window.display();
     }
     //
+
 
     int grid[9][9] = {{0}}; //Fill the grid with 0
 
