@@ -1,3 +1,5 @@
+//I have to change the grid, so that its possible to fill the grid with numbers (Interactive)
+
 #include "game.h"
 #include "sudoku.h"
 #include <SFML/Graphics.hpp>
