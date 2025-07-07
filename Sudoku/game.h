@@ -8,5 +8,4 @@ public:
 
 private:
     sf::RenderWindow window;
-    sf::CircleShape shape;
 };

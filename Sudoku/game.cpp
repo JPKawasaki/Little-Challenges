@@ -1,18 +1,26 @@
+#include "game.h"
 #include <SFML/Window.hpp>
+#include <SFML/Window/Event.hpp>
+#include <SFML/Graphics.hpp>
+#include <optional>
 
-int main()
+Game::Game()
+: window(sf::VideoMode({800, 600}), "Sudoku")
 {
-    sf::Window window(sf::VideoMode({800, 600}), "Sudoku");
+}
 
-    // run the program as long as the window is open
+void Game::run() //not main
+{
+    //sf::Window window(sf::VideoMode({800, 600}), "Sudoku");
+
     while (window.isOpen())
     {
-        // check all the window's events that were triggered since the last iteration of the loop
         while (const std::optional event = window.pollEvent())
         {
-            // "close requested" event: we close the window
             if (event->is<sf::Event::Closed>())
                 window.close();
         }
+        window.clear(sf::Color::White);
+        window.display();
     }
 }
