@@ -51,6 +51,20 @@ void Game::drawGrid() {
     }
 }
 
+void Game::newSudoku() {
+    sf::RectangleShape square(sf::Vector2f(130.f, 70.f));
+    square.setOutlineColor(sf::Color::Black);
+    window.draw(square);
+    
+    sf::Text btnText(font);
+    btnText.setFont(font);
+    btnText.setString("New Sudoku");
+    btnText.setCharacterSize(18);
+    btnText.setPosition(sf::Vector2f());
+    btnText.setFillColor(sf::Color::Black);
+    window.draw(btnText);
+}
+
 void Game::run() {
     while (window.isOpen())
     {
@@ -61,6 +75,7 @@ void Game::run() {
         }
         window.clear(sf::Color::White);
         drawGrid();
+        newSudoku();
         window.display();
     }
 }

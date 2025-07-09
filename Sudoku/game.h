@@ -12,4 +12,5 @@ class Game {
         sf::Font font;
         void drawGrid();
         void fillGrid();
+        void newSudoku();
 };
