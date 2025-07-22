@@ -1,5 +1,3 @@
-//I have to change the grid, so that its possible to fill the grid with numbers (Interactive)
-
 #include "game.h"
 #include "sudoku.h"
 #include <SFML/Graphics.hpp>
@@ -52,9 +50,23 @@ void Game::drawGrid() {
 }
 
 void Game::newSudoku() {
-    sf::RectangleShape square(sf::Vector2f(130.f, 70.f));
+    sf::RectangleShape square(sf::Vector2f(150.f, 60.f));
     square.setOutlineColor(sf::Color::Black);
     window.draw(square);
+
+    /*
+    bool isMouseOverBox(const sf::RenderWindow& window, const sf::RectangleShape& square) {
+        sf::Vector2i mousePos = sf::Mouse::getPosition(window)
+        sf::Vector2f worldPos = window.mapPixelToCoords(mousePos);
+        return square.getGlobalBounds().contains(worldPos);
+    };
+
+    while (isMouseOverBox(window, square)) {
+        sf::Mouse::
+    };
+    */
+
+    sf::Vector2f squarePos = square.getPosition();
     
     sf::Text btnText(font);
     btnText.setFont(font);
