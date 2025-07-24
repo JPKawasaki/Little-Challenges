@@ -10,11 +10,11 @@
         "-std=c++17",
         "-I./include",
         "-L./lib",
-        "src/main.cpp",
+        "src/\\*.cpp",
         "src/glad.c",
         "-lglfw3dll",
         "-o",
-        "myprogram.exe"
+        "${workspaceFolder}/myprogram.exe"
       ],
       "group": {
         "kind": "build",
